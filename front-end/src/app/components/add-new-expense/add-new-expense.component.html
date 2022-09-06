@@ -1,0 +1,48 @@
+<div class="my-5 d-flex col-12 justify-content-center">
+    <div class="card col-md-8 p-5">
+        <h5 class="card-title">Add New Expense</h5>
+        <form class="form" [formGroup]="formData" (ngSubmit)="onSubmit(formData.value)" novalidate>
+            <div class="form-group">
+                <label>Item: </label>
+                <input type="text" placeholder="Enter the item name" formControlName="item" class="form-control">
+                <span *ngIf="formData.controls['item'].dirty && formData.controls['item'].hasError('required')" class="error-msg">
+                    Please fill out the item name!
+                </span>
+            </div>
+            <div class="form-group">
+                <label>Category: </label>
+                <input type="text" placeholder="Enter the category" formControlName="category" class="form-control">
+                <span *ngIf="formData.controls['category'].dirty && formData.controls['category'].hasError('required')" class="error-msg">
+                    Please fill out the category!
+                </span>
+            </div>
+            <div class="form-group">
+                <label>Location: </label>
+                <input type="text" placeholder="Enter the location" formControlName="location" class="form-control">
+                <span *ngIf="formData.controls['location'].dirty && formData.controls['location'].hasError('required')" class="error-msg">
+                    Please fill out the location!
+                </span>
+            </div>
+            <div class="form-group">
+                <label>Amount: </label>
+                <input type="number" placeholder="Enter the amount of item" formControlName="amount" class="form-control">
+                <span *ngIf="formData.controls['amount'].dirty && formData.controls['amount'].hasError('required')" class="error-msg">
+                    Please fill out the amount!
+                </span>
+            </div>
+            <div class="form-group">
+                <label>Spent On: </label>
+                <input type="date" formControlName="spentOn" class="form-control">
+                <span *ngIf="formData.controls['spentOn'].dirty && formData.controls['spentOn'].hasError('required')" class="error-msg">
+                    Please fill out the spentOn Date!
+                </span>
+            </div>
+            <div class="d-flex justify-content-between mt-5">
+                <button class="btn btn-primary col-md-3" type="submit" [disabled]="!formData.valid">Submit</button>
+                <button class="btn btn-secondary col-md-3" routerLink="../expenses">Back</button>
+                <button class="btn btn-danger col-md-3" type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>
+
